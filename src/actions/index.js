@@ -9,7 +9,6 @@ function fetchMoeda() {
     const data = Object.entries(respons);
     const coinData = data.filter((coin) => coin[0] !== 'USDT')
       .map((coin) => coin[1].code);
-    console.log(coinData);
     dispatch(walletAction(coinData));
   };
 }
