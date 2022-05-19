@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 
 class Header extends React.Component {
   render() {
-    const { emailUser, getSum } = this.props;
+    const { emailUser } = this.props;
+
     return (
       <section>
         <div>TrybeWallet</div>
         <p data-testid="email-field">{emailUser}</p>
-        <p data-testid="total-field">{getSum.toFixed(2)}</p>
+        <p data-testid="total-field">0</p>
         <p data-testid="header-currency-field">BRL</p>
       </section>
     );
