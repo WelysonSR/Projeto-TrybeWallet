@@ -5,11 +5,11 @@ class Textarea extends React.Component {
   render() {
     const { descricao, funcao } = this.props;
     return (
-      <label htmlFor="descricao">
+      <label htmlFor="description">
         Descrição:
         <textarea
-          name="descricao"
-          id="descricao"
+          name="description"
+          id="description"
           value={ descricao }
           onChange={ funcao }
           data-testid="description-input"

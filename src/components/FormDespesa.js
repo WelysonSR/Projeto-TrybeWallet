@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { walletSave, walletSum } from '../actions';
+import fetchCotacao from '../func/fetch';
 import Select from './forms/Select';
 import Textarea from './forms/Textarea';
 
@@ -10,14 +12,15 @@ class FormDespesa extends React.Component {
     this.state = {
       metodoPagamento: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
       tagValue: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
-      valor: '',
-      moeda: '',
-      metodo: '',
-      tag: '',
-      descricao: '',
+      value: 0,
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      description: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.addItem = this.addItem.bind(this);
+    this.sumValue = this.sumValue.bind(this);
   }
 
   handleChange({ target }) {
@@ -27,11 +30,44 @@ class FormDespesa extends React.Component {
     });
   }
 
-  addItem() {}
+  async sumValue(coin) {
+    const { getSum, sumWallet } = this.props;
+    const { currency, value } = this.state;
+    const key = coin[currency];
+    if (currency !== 'BRL') {
+      const mult = Number(value) * Number(key.ask);
+      const som = Number(getSum) + mult;
+      sumWallet(som);
+    }
+  }
+
+  async addItem() {
+    const { getExpenses, saveWallet } = this.props;
+    const { value, currency, method, tag, description } = this.state;
+    const coin = await fetchCotacao();
+    const item = {
+      id: (getExpenses <= 0) ? 0 : getExpenses.length,
+      value,
+      currency,
+      method,
+      tag,
+      description,
+      exchangeRates: coin,
+    };
+    this.sumValue(coin);
+    this.setState({
+      value: '',
+      currency: '',
+      method: '',
+      tag: '',
+      description: '',
+    });
+    saveWallet(item);
+  }
 
   render() {
-    const { valor, moeda, metodo, tag,
-      descricao, metodoPagamento, tagValue } = this.state;
+    const { value, currency, method, tag,
+      description, metodoPagamento, tagValue } = this.state;
     const { walletCoin } = this.props;
     return (
       <form>
@@ -39,23 +75,23 @@ class FormDespesa extends React.Component {
           Valor:
           <input
             type="number"
-            value={ valor }
-            name="valor"
-            id="valor"
+            value={ value }
+            name="value"
+            id="value"
             data-testid="value-input"
             onChange={ this.handleChange }
           />
         </label>
         <Select
-          value={ moeda }
-          label="moeda"
+          value={ currency }
+          label="currency"
           labelName="Moeda:"
           selectValue={ walletCoin }
           funcao={ this.handleChange }
         />
         <Select
-          value={ metodo }
-          label="metodo"
+          value={ method }
+          label="method"
           labelName="Método de pagamento:"
           testid="method-input"
           selectValue={ metodoPagamento }
@@ -69,7 +105,7 @@ class FormDespesa extends React.Component {
           selectValue={ tagValue }
           funcao={ this.handleChange }
         />
-        <Textarea descricao={ descricao } funcao={ this.handleChange } />
+        <Textarea descricao={ description } funcao={ this.handleChange } />
         <input type="button" value="Adicionar despesa" onClick={ this.addItem } />
       </form>
     );
@@ -78,10 +114,19 @@ class FormDespesa extends React.Component {
 
 const mapStateToProps = (state) => ({
   walletCoin: state.wallet.currencies,
+  getExpenses: state.wallet.expenses,
+  getSum: state.wallet.sum,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  saveWallet: (state) => dispatch(walletSave(state)),
+  sumWallet: (state) => dispatch(walletSum(state)),
 });
 
 FormDespesa.propTypes = {
   walletCoin: PropTypes.string,
+  getExpenses: PropTypes.array,
+  getSum: PropTypes.number,
 }.isRequired;
 
-export default connect(mapStateToProps)(FormDespesa);
+export default connect(mapStateToProps, mapDispatchToProps)(FormDespesa);
