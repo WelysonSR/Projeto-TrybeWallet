@@ -34,10 +34,12 @@ class FormDespesa extends React.Component {
     const { getSum, sumWallet } = this.props;
     const { currency, value } = this.state;
     const key = coin[currency];
+    const number = 10;
     if (currency !== 'BRL') {
       const mult = Number(value) * Number(key.ask);
       const som = Number(getSum) + mult;
-      sumWallet(som);
+      const og = number ** 2; // https://pt.stackoverflow.com/questions/252246/decimais-sem-arredondar-em-javascript
+      sumWallet(Math.floor(som * og) / og);
     }
   }
 

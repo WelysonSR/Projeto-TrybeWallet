@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
+  print = () => {
+    const { expenses, getSum } = this.props;
+    return expenses.length === 0 ? 0 : getSum;
+  }
+
   render() {
     const { emailUser } = this.props;
-
     return (
       <section>
         <div>TrybeWallet</div>
         <p data-testid="email-field">{emailUser}</p>
-        <p data-testid="total-field">0</p>
+        <p data-testid="total-field">{this.print()}</p>
         <p data-testid="header-currency-field">BRL</p>
       </section>
     );
@@ -19,12 +23,14 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => ({
   emailUser: state.user.email,
+  expenses: state.wallet.expenses,
   getSum: state.wallet.sum,
 });
 
 Header.propTypes = {
   emailUser: PropTypes.string,
   getSum: PropTypes.number,
+  expenses: PropTypes.array,
 }.isRequired;
 
 export default connect(mapStateToProps)(Header);
