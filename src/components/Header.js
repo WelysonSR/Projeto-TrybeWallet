@@ -9,13 +9,19 @@ class Header extends React.Component {
   }
 
   render() {
-    const { emailUser } = this.props;
+    const { emailUser, expenses } = this.props;
     return (
       <section>
-        <div>TrybeWallet</div>
-        <p data-testid="email-field">{emailUser}</p>
-        <p data-testid="total-field">{this.print()}</p>
-        <p data-testid="header-currency-field">BRL</p>
+        {
+          expenses && (
+            <>
+              <div>TrybeWallet</div>
+              <p data-testid="email-field">{emailUser}</p>
+              <p data-testid="total-field">{ this.print()}</p>
+              <p data-testid="header-currency-field">BRL</p>
+            </>
+          )
+        }
       </section>
     );
   }

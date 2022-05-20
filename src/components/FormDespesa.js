@@ -6,16 +6,18 @@ import fetchCotacao from '../func/fetch';
 import Select from './forms/Select';
 import Textarea from './forms/Textarea';
 
+const alimentacao = 'Alimentação';
+
 class FormDespesa extends React.Component {
   constructor() {
     super();
     this.state = {
       metodoPagamento: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
-      tagValue: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
+      tagValue: [alimentacao, 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
       value: 0,
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: alimentacao,
       description: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -59,9 +61,9 @@ class FormDespesa extends React.Component {
     this.sumValue(coin, value, currency);
     this.setState({
       value: '',
-      currency: '',
-      method: '',
-      tag: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: alimentacao,
       description: '',
     });
     saveWallet(item);

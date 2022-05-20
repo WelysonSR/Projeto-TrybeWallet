@@ -7,8 +7,8 @@ class Table extends React.Component {
   subtractionValue = (item) => {
     const { getSum, sumWallet } = this.props;
     const multiplication = item.value * item.exchangeRates[item.currency].ask;
-    const result = this.decimalPlaces(getSum - multiplication);
-    sumWallet(result);
+    const result = getSum - multiplication;
+    sumWallet(Number(result).toFixed(2));
   }
 
   removeItem = (item) => {
@@ -37,8 +37,8 @@ class Table extends React.Component {
         </thead>
         <tbody>
           {
-            getExpenses.map((item, i) => (
-              <tr key={ i }>
+            getExpenses.map((item) => (
+              <tr key={ item.id }>
                 <td>{item.description}</td>
                 <td>{item.tag}</td>
                 <td>{item.method}</td>
