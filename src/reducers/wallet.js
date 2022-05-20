@@ -12,6 +12,8 @@ function walletReducer(state = INITIAL_STATE, action) {
     return { ...state, expenses: [...state.expenses, action.state] };
   case 'NEW_WALLTSUM':
     return { ...state, sum: action.state };
+  case 'REMOVE_ITEM':
+    return { ...state, expenses: action.state };
   default:
     return state;
   }

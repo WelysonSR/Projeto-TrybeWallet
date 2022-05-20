@@ -30,7 +30,7 @@ class FormDespesa extends React.Component {
     });
   }
 
-  async sumValue(coin) {
+  sumValue(coin) {
     const { getSum, sumWallet } = this.props;
     const { currency, value } = this.state;
     const key = coin[currency];
@@ -38,8 +38,8 @@ class FormDespesa extends React.Component {
     if (currency !== 'BRL') {
       const mult = Number(value) * Number(key.ask);
       const som = Number(getSum) + mult;
-      const og = number ** 2; // https://pt.stackoverflow.com/questions/252246/decimais-sem-arredondar-em-javascript
-      sumWallet(Math.floor(som * og) / og);
+      const decimal = number ** 2; // https://pt.stackoverflow.com/questions/252246/decimais-sem-arredondar-em-javascript
+      sumWallet(Math.floor(som * decimal) / decimal);
     }
   }
 
@@ -56,7 +56,7 @@ class FormDespesa extends React.Component {
       description,
       exchangeRates: coin,
     };
-    this.sumValue(coin);
+    this.sumValue(coin, value, currency);
     this.setState({
       value: '',
       currency: '',
