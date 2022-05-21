@@ -3,6 +3,8 @@ const walletAction = (state) => ({ type: 'NEW_WALLTMOEDA', state });
 const walletSave = (state) => ({ type: 'NEW_WALLTSAVE', state });
 const walletSum = (state) => ({ type: 'NEW_WALLTSUM', state });
 const itemRemove = (state) => ({ type: 'REMOVE_ITEM', state });
+const editItem = (state) => ({ type: 'EDIT_ITEM', state });
+const updateItem = (state) => ({ type: 'UPDATE_ITEM', state });
 
 function fetchMoeda() {
   return async (dispatch) => {
@@ -15,4 +17,5 @@ function fetchMoeda() {
   };
 }
 
-export { userAction, walletAction, walletSave, walletSum, fetchMoeda, itemRemove };
+export { userAction, walletAction, walletSave,
+  walletSum, fetchMoeda, itemRemove, editItem, updateItem };

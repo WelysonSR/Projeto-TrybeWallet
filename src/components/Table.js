@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { itemRemove, walletSum } from '../actions';
+import { itemRemove, walletSum, editItem } from '../actions';
 
 class Table extends React.Component {
   subtractionValue = (item) => {
@@ -16,6 +16,16 @@ class Table extends React.Component {
     const newItems = getExpenses.filter((selectItem) => selectItem.id !== item.id);
     this.subtractionValue(item);
     removeSelectedItem(newItems);
+  }
+
+  editItem = ({ id }) => {
+    const { getExpenses, itemEdit } = this.props;
+    const expense = getExpenses.find((selectedExpense) => selectedExpense.id === id);
+    const expenseItem = {
+      edit: true,
+      item: expense,
+    };
+    itemEdit(expenseItem);
   }
 
   render() {
@@ -53,7 +63,12 @@ class Table extends React.Component {
                 </td>
                 <td>Real</td>
                 <td>
-                  <input type="button" value="Editar" />
+                  <input
+                    type="button"
+                    value="Editar"
+                    data-testid="edit-btn"
+                    onClick={ () => this.editItem(item) }
+                  />
                   <input
                     type="button"
                     value="Deletar"
@@ -78,6 +93,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   removeSelectedItem: (state) => dispatch(itemRemove(state)),
   sumWallet: (state) => dispatch(walletSum(state)),
+  itemEdit: (state) => dispatch(editItem(state)),
 });
 
 Table.propTypes = {

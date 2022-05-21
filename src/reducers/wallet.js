@@ -2,6 +2,10 @@ const INITIAL_STATE = {
   currencies: [],
   expenses: [],
   sum: 0,
+  itemEdit: {
+    edit: false,
+    item: {},
+  },
 };
 
 function walletReducer(state = INITIAL_STATE, action) {
@@ -13,6 +17,10 @@ function walletReducer(state = INITIAL_STATE, action) {
   case 'NEW_WALLTSUM':
     return { ...state, sum: action.state };
   case 'REMOVE_ITEM':
+    return { ...state, expenses: action.state };
+  case 'EDIT_ITEM':
+    return { ...state, itemEdit: action.state };
+  case 'UPDATE_ITEM':
     return { ...state, expenses: action.state };
   default:
     return state;
