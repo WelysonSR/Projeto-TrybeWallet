@@ -19,12 +19,13 @@ class Table extends React.Component {
   }
 
   editItem = ({ id }) => {
-    const { getExpenses, itemEdit } = this.props;
+    const { getExpenses, itemEdit, editExpense } = this.props;
     const expense = getExpenses.find((selectedExpense) => selectedExpense.id === id);
     const expenseItem = {
       edit: true,
       item: expense,
     };
+    editExpense('editar');
     itemEdit(expenseItem);
   }
 

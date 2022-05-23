@@ -8,24 +8,34 @@ import Table from '../components/Table';
 import EditItem from '../components/EditItem';
 
 class Wallet extends React.Component {
+  state = { edit: false }
+
   componentDidMount() {
     const { walletCoin } = this.props;
     walletCoin();
   }
 
+  editExpense = (action) => {
+    if (action === 'editar') {
+      this.setState({ edit: true });
+    } else {
+      this.setState({ edit: false });
+    }
+  }
+
   render() {
-    const { item } = this.props;
+    const { edit } = this.state;
     return (
       <section>
         <Header />
         {
-          item.edit ? (
-            <EditItem />
+          edit ? (
+            <EditItem editExpense={ this.editExpense } />
           ) : (
             <FormDespesa />
           )
         }
-        <Table />
+        <Table editExpense={ this.editExpense } />
       </section>
     );
   }
