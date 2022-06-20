@@ -1,0 +1,16 @@
+/* stylelint-disable linebreaks */
+
+/* stylelint-disable font-weight-notation */
+.section-erro {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.h1-erro {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
