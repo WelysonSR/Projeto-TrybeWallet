@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { itemRemove, walletSum, editItem } from '../actions';
+import './Table.css';
 
 class Table extends React.Component {
   subtractionValue = (item) => {
@@ -32,7 +33,7 @@ class Table extends React.Component {
   render() {
     const { getExpenses } = this.props;
     return (
-      <table>
+      <table className="table table-hover">
         <thead>
           <tr>
             <th>Descrição</th>
@@ -67,13 +68,13 @@ class Table extends React.Component {
                   <input
                     type="button"
                     value="Editar"
-                    data-testid="edit-btn"
+                    className="btn btn-warning"
                     onClick={ () => this.editItem(item) }
                   />
                   <input
                     type="button"
                     value="Deletar"
-                    data-testid="delete-btn"
+                    className="btn btn-danger"
                     onClick={ () => this.removeItem(item) }
                   />
                 </td>
