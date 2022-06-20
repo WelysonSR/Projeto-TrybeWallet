@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userAction } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -44,14 +45,14 @@ class Login extends React.Component {
   render() {
     const { email, password, enableButton } = this.state;
     return (
-      <section>
+      <section className="container-login">
         <h1>TRYBEWALLET</h1>
         <form>
           <input
             type="email"
             name="email"
             value={ email }
-            data-testid="email-input"
+            className="form-control form-login"
             placeholder="Digite seu email"
             onChange={ this.handleChange }
           />
@@ -59,13 +60,14 @@ class Login extends React.Component {
             type="password"
             name="password"
             value={ password }
-            data-testid="password-input"
+            className="form-control form-login"
             placeholder="Digite seu senha"
             onChange={ this.handleChange }
           />
           <input
             type="button"
             value="Entrar"
+            className="btn btn-info btn-login"
             disabled={ enableButton }
             onClick={ this.buttonLogin }
           />

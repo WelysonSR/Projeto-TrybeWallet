@@ -1,0 +1,22 @@
+/* stylelint-disable linebreaks */
+.container-login {
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  margin-left: 460px;
+  margin-top: 250px;
+  width: 500px;
+}
+
+.form-login {
+  margin: 5px 0;
+}
+
+.btn-login {
+  margin: 0 0 0 65px;
+}
