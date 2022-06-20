@@ -1,4 +1,8 @@
 /* stylelint-disable linebreaks */
+.table {
+  text-align: center;
+}
+
 .btn-danger {
   margin-left: 5px;
 }
