@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { walletSum } from '../actions';
+import './Header.css';
 
 class Header extends React.Component {
   componentDidMount() {
@@ -23,18 +24,18 @@ class Header extends React.Component {
   render() {
     const { emailUser, expenses } = this.props;
     return (
-      <section>
+      <header>
+        <h1 className="logo">TrybeWallet</h1>
         {
           expenses && (
-            <>
-              <div>TrybeWallet</div>
-              <p data-testid="email-field">{emailUser}</p>
-              <p data-testid="total-field">{ this.print()}</p>
-              <p data-testid="header-currency-field">BRL</p>
-            </>
+            <div className="info-user">
+              <p className="user-email">{emailUser}</p>
+              <p>{ this.print()}</p>
+              <p>BRL</p>
+            </div>
           )
         }
-      </section>
+      </header>
     );
   }
 }

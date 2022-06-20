@@ -1,0 +1,26 @@
+/* stylelint-disable linebreaks */
+
+/* stylelint-disable font-weight-notation */
+header {
+  align-items: center;
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.info-user {
+  align-items: center;
+  display: flex;
+}
+
+.user-email {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 30px;
+}
