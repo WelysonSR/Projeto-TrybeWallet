@@ -113,9 +113,10 @@ class FormDespesa extends React.Component {
           Description
           <input
             type="text"
-            descricao={ description }
+            value={ description }
+            name="description"
             className="form-control description"
-            funcao={ this.handleChange }
+            onChange={ this.handleChange }
           />
         </label>
         <input
