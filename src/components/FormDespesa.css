@@ -1,0 +1,22 @@
+/* stylelint-disable linebreaks */
+.form-description {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.description {
+  width: 250px;
+}
+
+.form-label {
+  margin: 0 5px;
+}
+
+.btn-add {
+  margin-left: 5px;
+  margin-top: 25px;
+}

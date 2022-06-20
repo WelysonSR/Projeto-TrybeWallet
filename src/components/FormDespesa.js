@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { walletSave, walletSum } from '../actions';
 import fetchCotacao from '../func/fetch';
 import Select from './forms/Select';
-import Textarea from './forms/Textarea';
+import './FormDespesa.css';
 
 const alimentacao = 'Alimentação';
 
@@ -74,15 +74,15 @@ class FormDespesa extends React.Component {
       description, metodoPagamento, tagValue } = this.state;
     const { walletCoin } = this.props;
     return (
-      <form>
-        <label htmlFor="valor">
+      <form className="form-description">
+        <label htmlFor="valor" className="form-label">
           Valor:
           <input
             type="number"
             value={ value }
             name="value"
             id="value"
-            data-testid="value-input"
+            className="form-control"
             onChange={ this.handleChange }
           />
         </label>
@@ -109,8 +109,21 @@ class FormDespesa extends React.Component {
           selectValue={ tagValue }
           funcao={ this.handleChange }
         />
-        <Textarea descricao={ description } funcao={ this.handleChange } />
-        <input type="button" value="Adicionar despesa" onClick={ this.addItem } />
+        <label htmlFor="description" className="form-label">
+          Description
+          <input
+            type="text"
+            descricao={ description }
+            className="form-control description"
+            funcao={ this.handleChange }
+          />
+        </label>
+        <input
+          type="button"
+          value="Adicionar despesa"
+          className="btn btn-primary btn-add"
+          onClick={ this.addItem }
+        />
       </form>
     );
   }

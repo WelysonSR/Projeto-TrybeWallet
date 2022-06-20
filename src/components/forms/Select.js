@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 class Select extends React.Component {
   render() {
-    const { label, labelName, selectValue, value, funcao, testid } = this.props;
+    const { label, labelName, selectValue, value, funcao } = this.props;
     return (
-      <label htmlFor={ label }>
+      <label htmlFor={ label } className="form-label">
         { labelName }
         <select
           name={ label }
           id={ label }
           value={ value }
           onChange={ funcao }
-          data-testid={ testid }
+          className="form-select"
         >
           {
             (selectValue.length > 0) && (
