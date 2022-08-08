@@ -22,3 +22,5 @@ npm install
 ```bash 
 npm start
 ``` 
+### Observação.
+É necessário a instalação do node versão 16 para executar a aplicação localmente.
