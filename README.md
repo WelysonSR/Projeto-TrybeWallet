@@ -10,7 +10,7 @@ Front-end:
 > Desenvolvido usando: React, Redux, CSS3
 
 ## Visualize o projeto agora
-Web: <a href="https://projeto-trybe-wallet-beta.vercel.app/" target="_blank">Trybe Wallet</a>
+Web: <a href="https://projeto-trybe-wallet-beta.vercel.app/" target="_blank" rel="noopener ugc nofollow">Trybe Wallet</a>
 
 ## Instalando Dependências
 
@@ -25,4 +25,4 @@ npm install
 npm start
 ``` 
 ### Observação.
-É necessário a instalação do <a href="https://nodejs.org/en/" target="_blank">node</a> versão 16 para executar a aplicação localmente.
+É necessário a instalação do <a href="https://nodejs.org/en/" target="_blank" rel="noopener ugc nofollow">node</a> versão 16 para executar a aplicação localmente.
