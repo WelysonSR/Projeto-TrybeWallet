@@ -7,7 +7,7 @@ Front-end:
 > Desenvolvido usando: React, Redux, CSS3
 
 ## Visualize o projeto agora
-Webi: https://projeto-trybe-wallet-beta.vercel.app/
+Web: <a herf="https://projeto-trybe-wallet-beta.vercel.app/" target="_blank">Trybe Wallet</a>
 
 ## Instalando Dependências
 
