@@ -1,6 +1,9 @@
 # TrybeWallet
 
 # Contexto
+Carteira virtual onde pode salvo os seus gasto diário em qualquer moeda, ao salvar e feito a conversão para moeda nacional calculando o gasto e a taxa de câmbio.
+Ao salvar um gasto podemos edita-lo caso necessário ou exclui-lo.
+#### Obs:
 Projeto desenvolvido para refinar habilidades permite armazenar informações no estado global assim permitindo que toda aplicação tenha acesso caso necessário
 
 Front-end:
