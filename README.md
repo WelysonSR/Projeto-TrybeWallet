@@ -11,6 +11,10 @@ Front-end:
 
 ## Visualize o projeto agora
 Web: <a href="https://projeto-trybe-wallet-beta.vercel.app/" rel="noopener ugc nofollow" target="_blank">Trybe Wallet</a>
+#### Para testar a aplicação informe um e-mail no formato correto. Exemplo:
+> test@gmail.com
+#### E informe uma senha maior ou igual a 6:
+> 123456
 
 ## Instalando Dependências
 
